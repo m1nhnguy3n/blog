@@ -1,26 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- Bootstrap CSS -->
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
-            crossorigin="anonymous"
-        />
-        <link rel="stylesheet" href="css/style-createPage.css" />
-        <title>Create Blog Page</title>
-    </head>
-    <body>
-        <div class="container-fluid">
-            <div
+const updateForm = document.querySelector('.update-form-container');
+let blog_id = 0;
+
+const renderUpdateForm = async () => {
+    const res = await fetch(
+        `https://blog-server-y5zy.onrender.com/posts/${blog_id}`,
+        {
+            method: 'GET',
+        }
+    );
+
+    const blogData = await res.json();
+    console.log(blogData);
+
+    let template = `<div
                 class="row justify-content-center align-items-center create-row"
             >
-                <div class="col-lg-8 create-form border flex-column d-flex">
+                <div class="col-md-8 create-form border flex-column d-flex">
                     <form>
-                        <h1 class="text-center">Create Blog</h1>
+                        <h1 class="text-center">Update Blog</h1>
                         <div class="form-group row">
                             <label
                                 for="exampleFormControlTextarea1"
@@ -31,6 +28,7 @@
                                 type="text"
                                 class="form-control col-sm-10"
                                 placeholder="Title"
+                                value="${blogData.title}"
                                 id="exampleFormControlTextarea1"
                                 name="title"
                             />
@@ -45,6 +43,7 @@
                                 type="text"
                                 class="form-control col-sm-10"
                                 placeholder="Author Name"
+                                value="${blogData.author}"
                                 id="exampleFormControlTextarea2"
                                 name="author"
                             />
@@ -61,7 +60,7 @@
                                 rows="3"
                                 placeholder="Description"
                                 name="description"
-                            ></textarea>
+                            >${blogData.description}</textarea>
                         </div>
                         <div class="form-group row">
                             <label
@@ -73,6 +72,7 @@
                                 type="text"
                                 class="form-control col-sm-10"
                                 placeholder="Picture Link"
+                                value="${blogData.image}"
                                 id="exampleFormControlTextarea2"
                                 name="image"
                             />
@@ -80,31 +80,62 @@
                         <div class="row justify-content-around">
                             <a
                                 class="btn btn-primary col-4"
-                                href="/index.html"
+                                href='/detailPage.html?id=${blog_id}'
                                 role="button"
                                 >Back</a
                             >
                             <button
                                 type="submit"
-                                class="btn btn-success col-4 create-button"
+                                class="btn btn-success col-4 update-button"
+                                data-id="${blogData.id}"
                             >
-                                Create
+                                Update
                             </button>
+
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-        <script src="./js/create.js"></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-            crossorigin="anonymous"
-        ></script>
-    </body>
-</html>
+            </div>`;
+    updateForm.innerHTML = template;
+
+    const updateButton = document.querySelector('.update-button');
+    const form = document.querySelector('form');
+
+    updateButton.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        const blogData = {
+            title: form.title.value,
+            description: form.description.value,
+            author: form.author.value,
+            image: form.image.value,
+            createdAt: new Date().toISOString(),
+            view: 100,
+        };
+
+        console.log(blogData);
+
+        // await fetch('https://blog-server-y5zy.onrender.com/posts/${blog_id}', {
+        //     method: 'PUT',
+        //     body: JSON.stringify(blogData),
+        //     headers: { 'Content-Type': 'application/json' },
+        // });
+
+
+        // window.location.replace('/detailPage.html?id=19');
+    });
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        var url_string = window.location.href.toLowerCase();
+        var url = new URL(url_string);
+        var id = url.searchParams.get('blog_id');
+        blog_id = id;
+        console.log(blog_id);
+    } catch (err) {
+        console.log("Issues with Parsing URL Parameter's - " + err);
+    }
+
+    renderUpdateForm();
+});
