@@ -11,16 +11,26 @@
 /* homepage */
 .container-homepage {
   background-color: #ffffff;
+  padding: 0 100px;
 }
 .h2-blog {
   display: flex;
   justify-content: center;
   margin-top: 30px;
 }
+
+.img {
+  width: 85%;
+}
+.section-blog {
+}
+
 .container-featured {
-  display: flex;
-  flex-wrap: nowrap;
-  margin: 50px 150px;
+  /* display: flex;
+    flex-wrap: nowrap; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   border-radius: 10px;
   background-color: #202842;
   padding: 20px;
@@ -31,7 +41,6 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   display: block;
-  width: 360px;
   height: 610px;
   background-color: #ffffff;
 }
@@ -61,4 +70,6 @@
 .viewmore {
   display: grid;
   place-content: center;
+  padding-top: 2%;
+  padding-bottom: 5%;
 }

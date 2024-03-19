@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const container = document.querySelector(".grid-container");
+  const container = document.querySelector(".grid-container2");
   const renderPosts = async (page, perPage) => {
     let uri = `https://blog-server-y5zy.onrender.com/posts?_page=${page}&_per_page=${perPage}`;
     const res = await fetch(uri);
@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const renderGrid = (data) => {
-    data.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+    data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     let template = "";
-    data?.forEach((item) => {
+    data?.forEach((item, index) => {
       template += `<div class="blog-featured">
             <div class="content-featured">
               <div class="section-blog">
@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="author">
                   <p>${item?.author}</p>
                 </div>
-                
               </div>
             </div>
           </div>
@@ -37,5 +36,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener("DOMContentLoaded", () => {
     renderPosts(1, 3);
+  });
+  container.addEventListener("click", (event) => {
+    if (event.target.classList.contains("section-title")) {
+      const blogItem = document.querySelector(
+        `.blog-featured[data-id="${itemId}"]`
+      );
+
+      blogItem.style.display = "block";
+    }
   });
 });
