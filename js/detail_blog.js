@@ -60,13 +60,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="form-group col-md-4">
                         <label for="author">Author</label>
                             ${item.comments.map((comment, index) => `
-                                <input readonly class="form-control mt-1" id="comment-${comment.id}" value="${comment.author_comment}">
+                                <input readonly class="form-control mt-1" value="${comment.author_comment}">
                             `).join('')}
                     </div>
                     <div class="form-group col-md-8">
                         <label for="comment">Comment</label>
                             ${item.comments.map((comment, index) => `
-                                <input readonly class="form-control mt-1" id="comment-${comment.id}" value="${comment.text}">
+                                <input readonly class="form-control mt-1" value="${comment.text}">
                             `).join('')}
                     </div>
                 </div>
