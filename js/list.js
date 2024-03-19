@@ -1,4 +1,4 @@
-// Wait for the DOM to be fully loaded
+
 document.addEventListener('DOMContentLoaded', function () {
     const container = document.querySelector('.grid-container');
     const paginationContainer = document.querySelector('.pagination');
@@ -17,34 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    // const renderGrid = (data) => {
-    //     let template = '';
-    //     data?.forEach(item => {
-    //         template += `
-    //         <div class="grid-item">
-    //             <img class="card-img-top" src=${item?.image} alt="${item?.title}">
-    //             <div class="card-body">
-    //                 <h5 class="card-title">${item?.title}</h5>
-    //                 <p class="card-text">${item?.description}</p>
-    //                 <p class="card-text"><small class="text-muted">${item?.author}</small></p>
-    //                 <button class="btn btn-danger btn-delete-post" data-id="${item.id}">Delete</button>
-    //                 <a href="/detailPage.html?blog_id=${item.id}" class="btn btn-primary ml-2 ">Detail</a>
-    //             </div>
-    //         </div>
-    //       `
-    //     })
-
-    //     container.innerHTML = template;
-    //     const deleteButtons = document.querySelectorAll('.btn-delete-post');
-    //     deleteButtons.forEach(button => {
-    //         button.addEventListener('click', () => {
-    //             const postId = button.getAttribute('data-id');
-    //             const filteredData = data?.filter(item => item.id !== postId);
-    //             renderGrid(filteredData)
-    //         });
-    //     });
-    // }
-
     const renderGrid = (data) => {
         let template = '';
         data?.forEach(item => {
@@ -56,30 +28,33 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p class="card-text">${item?.description}</p>
                     <p class="card-text"><small class="text-muted">${item?.author}</small></p>
                     <button class="btn btn-danger btn-delete-post" data-id="${item.id}">Delete</button>
-                    <a href="/detailPage.html?blog_id=${item.id}" class="btn btn-primary ml-2">Detail</a>
+                    <a href="/detailPage.html?blog_id=${item.id}" class="btn btn-primary ml-2>Detail</a>
                 </div>
             </div>
           `
-        });
+        })
 
         container.innerHTML = template;
         const deleteButtons = document.querySelectorAll('.btn-delete-post');
+
         deleteButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                const isConfirmed = confirm('Are you sure you want to delete this post?');
-                if (isConfirmed) {
+            button.addEventListener('click', () => {
+                const modal = document.getElementById('id01')
+                modal.style.display = 'block'
+                const yes = document.getElementById('yes')
+                const no = document.getElementById('no')
+                yes.addEventListener('click', () => {
+                    modal.style.display = 'none'
                     const postId = button.getAttribute('data-id');
                     const filteredData = data?.filter(item => item.id !== postId);
-                    renderGrid(filteredData);
-                    alert('Post deleted successfully.');
-                } else {
-                    event.preventDefault();
-                }
+                    renderGrid(filteredData)
+                })
+                no.addEventListener('click', () => {
+                    modal.style.display = 'none'
+                })
             });
         });
     }
-
-
 
     const pagination = (data) => {
         console.log(data)

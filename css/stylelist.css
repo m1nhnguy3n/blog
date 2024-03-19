@@ -8,7 +8,7 @@ body {
     color: #fff;
     background-color: #20B52F;
     border-color: #20B52F;
-    margin-right: 2px;
+    margin-right: 10px;
 }
   .listpage-h2 {
     text-align: center;
@@ -16,6 +16,7 @@ body {
   .card-title {
     color: #007bff;
     text-align: justify;
+    font-weight: 650;
   }
   .text-muted {
     color: rgb(29, 30, 31) !important;
@@ -40,6 +41,10 @@ body {
     padding: 20px;
     text-align: center; 
   }
+  .listpage-h2 {
+    text-align: center;
+    font-weight: 650;
+}
 
   .page-link:active{
     background-color:#007bff ;
@@ -50,7 +55,9 @@ body {
     background-color:#007bff ;
     color: white;
   }
-
+  .list_name{
+    font-weight: 650;
+  }
   @media (max-width: 768px) {
     .grid-container {
         display: block;

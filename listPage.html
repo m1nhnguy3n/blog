@@ -6,40 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
-    <link href="stylelist.css" rel="stylesheet" />
+    <link href="/css/stylelist.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>List Blog</title>
 </head>
 
 <body>
-    <!-- <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            <img src="img/apple.png" width="30" height="30" class="d-inline-block align-top" alt="">
-            Apple Blog
-        </a>
-        <button class="btn btn-primary submit" type="submit">Create</button>
-    </nav> -->
-    <div class="d-flex justify-content-between align-items-center" style="background-color: #F9F5FF;">
-        <img class="img_detail" src="/img/apple.png" alt="Apple Logo" height="55">
-       <div class="listitem">
-        <h2 class="list_name">Apple Blog</h2>
+
+
     </div>
+    <div class="d-flex justify-content-between align-items-center" style="background-color: #F9F5FF;">
+        <img class="img_detail" src="/img/list/apple.png" alt="Apple Logo" height="55">
+        <div class="listitem">
+            <h2 class="list_name">Apple Blog</h2>
+        </div>
         <a href="/createPage.html" class="btn btn-primary submit" type="submit">Create</a>
     </div>
     <div class="container mt-5">
         <h2 class="listpage-h2">List Blogs</h2>
+
         <div class="row mb-5">
             <div class="grid-container">
             </div>
         </div>
-        <nav>
-            <ul class="d-flex justify-content-center align-items-center pagination">
-                <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-            </ul>
-        </nav>
+        <div id="id01" class="w3-modal">
+            <div class="w3-modal-content" style="padding: 2%;">
+                <div class="w3-container">
+                    <span onclick="document.getElementById('id01').style.display='none'"
+                        class="w3-button w3-display-topright">&times;</span>
+                    <p>Delete Item.</p>
+                    <p>Do you confirm delete item.</p>
+                    <div>
+                        <button id='yes' class="btn btn-success">
+                            Yes
+                        </button>
+                        <button id='no' class="btn btn-danger">
+                            No
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="list.js"></script>
+    <nav>
+        <ul class="d-flex justify-content-center align-items-center pagination">
+        </ul>
+    </nav>
+    </div>
+    <script src="/js/list.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
