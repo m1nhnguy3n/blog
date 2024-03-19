@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
     };
     const renderGrid = (item) => {
         let template = `
-            <hr />
             <div class="container-button">
                 <a href="/updatePage.html?blog_id=${item.id}" class="btn btn-primary btn-update-blog">Update</a>
             </div>
@@ -43,15 +42,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="card-body-1 mt-5">
                         <div class="form-group d-flex flex-row">
                             <label style="width:30%">Title</label>
-                            <input type="text" class="form-control mb-1" style="border-radius: 2%;" value="${item?.title}">
+                            <input class="form-control mb-1" readonly value="${item?.title}">
                         </div>
                         <div class="form-group d-flex flex-row">
                             <label style="width:30%">Author</label>
-                            <input type="text" class="form-control" value="${item.author}">
+                            <input class="form-control mb-1" readonly value="${item.author}">
                         </div>
                         <div class="form-group d-flex flex-row">
                             <label style="width:30%">Description</label>
-                            <textarea class="form-control" rows="9">${item.description}</textarea>
+                            <textarea class="form-control" rows="5" readonly>${item.description}</textarea>
                         </div>
                     </div>
                 </div>
@@ -61,13 +60,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="form-group col-md-4">
                         <label for="author">Author</label>
                             ${item.comments.map((comment, index) => `
-                                <input type="text" class="form-control mt-1" id="comment-${comment.id}" value="${comment.author_comment}">
+                                <input readonly class="form-control mt-1" id="comment-${comment.id}" value="${comment.author_comment}">
                             `).join('')}
                     </div>
                     <div class="form-group col-md-8">
                         <label for="comment">Comment</label>
                             ${item.comments.map((comment, index) => `
-                                <input type="text" class="form-control mt-1" id="comment-${comment.id}" value="${comment.text}">
+                                <input readonly class="form-control mt-1" id="comment-${comment.id}" value="${comment.text}">
                             `).join('')}
                     </div>
                 </div>
