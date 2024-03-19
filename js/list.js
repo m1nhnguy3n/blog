@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p class="card-text">${item?.description}</p>
                     <p class="card-text"><small class="text-muted">${item?.author}</small></p>
                     <button class="btn btn-danger btn-delete-post" data-id="${item.id}">Delete</button>
-                    <a href="/detailPage.html?blog_id=${item.id}" class="btn btn-primary ml-2>Detail</a>
+                    <a href="/detailPage.html?blog_id=${item.id}" class="btn btn-primary">Detail</a>
                 </div>
             </div>
           `
