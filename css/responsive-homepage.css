@@ -1,0 +1,31 @@
+@media (max-width: 431px) {
+  .navbar {
+    width: 100%;
+    display: flex;
+  }
+  .logo {
+    margin-left: o;
+  }
+  .h1-title {
+    display: none;
+  }
+
+  .create-btn .btn {
+    margin-right: 0;
+  }
+  .container-homepage {
+    background-color: #ffffff;
+    padding: 0 10px;
+  }
+  .container-featured {
+    display: block;
+    margin: 50px 0;
+    border-radius: 10px;
+    background-color: #202842;
+    padding-left: 5%;
+    justify-content: space-around;
+  }
+  .blog-featured {
+    margin-top: 20px;
+  }
+}

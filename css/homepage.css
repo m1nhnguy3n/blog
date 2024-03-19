@@ -1,0 +1,74 @@
+/* Header */
+.create-btn .btn {
+  background-color: #20b52f;
+  margin-right: 50px;
+}
+.navbar {
+  background-color: #f9f5ff;
+  justify-content: space-around;
+}
+
+/* homepage */
+.container-homepage {
+  background-color: #ffffff;
+  padding: 0 100px;
+}
+.h2-blog {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.img {
+  width: 100%;
+}
+.section-blog {
+}
+
+.container-featured {
+  /* display: flex;
+    flex-wrap: nowrap; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  border-radius: 10px;
+  background-color: #202842;
+  padding: 20px;
+  justify-content: space-around;
+}
+.blog-featured {
+  border: 1px solid;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  display: block;
+  height: fit-content;
+  background-color: #ffffff;
+}
+.section-title {
+  font-size: large;
+  font-weight: 700;
+  margin-top: 20px;
+  padding-left: 10px;
+}
+.description {
+  padding-top: 20px;
+  padding-left: 10px;
+}
+.author {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+}
+.viewmore-btn {
+  width: 200px;
+  background-color: #d9d9d9;
+  color: black;
+  font-weight: 700;
+}
+
+.viewmore {
+  display: grid;
+  place-content: center;
+  padding-top: 2%;
+  padding-bottom: 5%;
+}
