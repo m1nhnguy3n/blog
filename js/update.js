@@ -2,12 +2,9 @@ const updateForm = document.querySelector('.update-form-container');
 let blog_id = 0;
 
 const renderUpdateForm = async () => {
-    const res = await fetch(
-        `https://blog-server-y5zy.onrender.com/posts/${blog_id}`,
-        {
-            method: 'GET',
-        }
-    );
+    const res = await fetch(`http://localhost:3000/posts/${blog_id}`, {
+        method: 'GET',
+    });
 
     const blogData = await res.json();
 
