@@ -1,0 +1,12 @@
+.create-form {
+    border-radius: 1.5rem;
+    padding: 50px 50px 50px 50px;
+}
+
+.container-fluid {
+    height: 100vh;
+}
+
+.create-row {
+    height: 100%;
+}
