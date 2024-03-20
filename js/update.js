@@ -117,10 +117,10 @@ const renderUpdateForm = async () => {
             headers: { 'Content-Type': 'application/json' },
         })
             .then((res) => {
-                // window.location.replace(`/detailPage.html?blog_id=${blog_id}`);
-                console.log(res);
+                window.location.replace(`/detailPage.html?blog_id=${blog_id}`);
+                alert('Update Success !!!');
             })
-            .catch((error) => console.log(error));
+            .catch((error) => alert("Update Failed !!!"));
     });
 };
 

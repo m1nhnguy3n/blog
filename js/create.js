@@ -18,7 +18,9 @@ createButton.addEventListener('click', async (e) => {
         method: 'POST',
         body: JSON.stringify(blogData),
         headers: { 'Content-Type': 'application/json' },
-    });
+    }).then(() => alert('Create Success !!!')).catch(() => 
+                alert('Create Failed !!!')
+    );
 
     window.location.replace('/index.html');
 });
@@ -27,4 +29,3 @@ backToHomeBtn.addEventListener('click', async (e) => {
     e.preventDefault();
     window.location.replace('/index.html');
 });
-
