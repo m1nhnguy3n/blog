@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const pageNumber = 1;
     const perPageNumber = 12;
     const renderPosts = async (page, perPage) => {
-        let uri = `https://blog-server-y5zy.onrender.com/posts?_page=${page}&_per_page=${perPage}`;
+        let uri = `http://localhost:3000/posts?_page=${page}&_per_page=${perPage}`;
         const res = await fetch(uri);
         const data = await res.json();
         renderGrid(data.data);
@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const no = document.getElementById('no');
                 yes.addEventListener('click', async () => {
                     const postId = button.getAttribute('data-id');
-
                     await fetch(
                         `https://blog-server-y5zy.onrender.com/posts/${postId}`,
                         {
