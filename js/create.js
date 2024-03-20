@@ -14,14 +14,11 @@ createButton.addEventListener('click', async (e) => {
         view: 0,
     };
 
-    console.log(blogData);
-
-
-    // await fetch('https://blog-server-y5zy.onrender.com/posts', {
-    //     method: 'POST',
-    //     body: JSON.stringify(blogData),
-    //     headers: { 'Content-Type': 'application/json' },
-    // });
+    await fetch('https://blog-server-y5zy.onrender.com/posts', {
+        method: 'POST',
+        body: JSON.stringify(blogData),
+        headers: { 'Content-Type': 'application/json' },
+    });
 
     window.location.replace('/index.html');
 });

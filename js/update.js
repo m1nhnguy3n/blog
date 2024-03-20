@@ -2,22 +2,18 @@ const updateForm = document.querySelector('.update-form-container');
 let blog_id = 0;
 
 const renderUpdateForm = async () => {
-    const res = await fetch(
-        `https://blog-server-y5zy.onrender.com/posts/${blog_id}`,
-        {
-            method: 'GET',
-        }
-    );
+    const res = await fetch(`http://localhost:3000/posts/${blog_id}`, {
+        method: 'GET',
+    });
 
     const blogData = await res.json();
-    console.log(blogData);
 
     let template = `<div
                 class="row justify-content-center align-items-center create-row"
             >
                 <div class="col-md-8 create-form border flex-column d-flex">
                     <form>
-                        <h1 class="text-center">Update Blog</h1>
+                        <h1 class="text-center mb-5">Update Blog</h1>
                         <div class="form-group row">
                             <label
                                 for="exampleFormControlTextarea1"
@@ -77,10 +73,10 @@ const renderUpdateForm = async () => {
                                 name="image"
                             />
                         </div>
-                        <div class="row justify-content-around">
+                        <div class="row justify-content-around mt-4">
                             <a
                                 class="btn btn-primary col-4"
-                                href='/detailPage.html?id=${blog_id}'
+                                href='/detailPage.html?blog_id=${blog_id}'
                                 role="button"
                                 >Back</a
                             >
@@ -109,20 +105,19 @@ const renderUpdateForm = async () => {
             description: form.description.value,
             author: form.author.value,
             image: form.image.value,
-            createdAt: new Date().toISOString(),
-            view: 100,
         };
+        console.log(blog_id);
 
-        console.log(blogData);
-
-        // await fetch('https://blog-server-y5zy.onrender.com/posts/${blog_id}', {
-        //     method: 'PUT',
-        //     body: JSON.stringify(blogData),
-        //     headers: { 'Content-Type': 'application/json' },
-        // });
-
-
-        // window.location.replace('/detailPage.html?id=19');
+        await fetch(`https://blog-server-y5zy.onrender.com/posts/${blog_id}`, {
+            method: 'PATCH',
+            body: JSON.stringify(blogData),
+            headers: { 'Content-Type': 'application/json' },
+        })
+            .then((res) => {
+                // window.location.replace(`/detailPage.html?blog_id=${blog_id}`);
+                console.log(res);
+            })
+            .catch((error) => console.log(error));
     });
 };
 
@@ -132,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
         var url = new URL(url_string);
         var id = url.searchParams.get('blog_id');
         blog_id = id;
-        console.log(blog_id);
     } catch (err) {
         console.log("Issues with Parsing URL Parameter's - " + err);
     }
