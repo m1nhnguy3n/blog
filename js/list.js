@@ -1,12 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
     const container = document.querySelector('.grid-container');
     const paginationContainer = document.querySelector('.pagination');
+<<<<<<< HEAD
+=======
+    console.log(paginationContainer);
+>>>>>>> 4302b7a (feat:ex6-create-update-page)
     const pageNumber = 1;
     const perPageNumber = 12;
     const renderPosts = async (page, perPage) => {
-        let uri = `https://blog-server-y5zy.onrender.com/posts?_page=${page}&_per_page=${perPage}`;
+        let uri = `http://localhost:3000/posts?_page=${page}&_per_page=${perPage}`;
         const res = await fetch(uri);
         const data = await res.json();
+<<<<<<< HEAD
+=======
+        console.log(data);
+>>>>>>> 4302b7a (feat:ex6-create-update-page)
         renderGrid(data.data);
         pagination(data);
     };
@@ -55,6 +63,10 @@ document.addEventListener('DOMContentLoaded', function () {
                             }
                         })
                         .catch((error) => console.log(error));
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4302b7a (feat:ex6-create-update-page)
                 });
                 no.addEventListener('click', () => {
                     modal.style.display = 'none';
@@ -64,6 +76,10 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     const pagination = (data) => {
+<<<<<<< HEAD
+=======
+        console.log(data);
+>>>>>>> 4302b7a (feat:ex6-create-update-page)
         let template = '';
         for (let i = 1; i <= data.pages; i++) {
             const isActive = data.prev + 1 === i ? 'active' : '';
